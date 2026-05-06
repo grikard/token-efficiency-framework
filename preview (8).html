@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary metadata -->
+  <title>Token Efficiency Framework — Workflow Economics | Gary Rikard, MBA</title>
+  <meta name="title" content="Token Efficiency Framework — Workflow Economics | Gary Rikard, MBA">
+  <meta name="description" content="A four-tab interactive workflow economics framework for assessing enterprise AI displacement, token efficiency scaling curves, signal thresholds, and capital allocation posture.">
+  <meta name="author" content="Gary Rikard">
+  <meta name="creator" content="Gary Rikard">
+  <meta name="publisher" content="Gary Rikard">
+  <meta name="keywords" content="Token Efficiency, Workflow Economics, Enterprise AI, AI ROI, AI displacement, signal threshold, capital allocation, agentic AI, AI governance, ROIC, automation economics">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="en">
+  <meta name="theme-color" content="#111827">
+  <link rel="canonical" href="https://grikard.github.io/token-efficiency-framework/">
+
+  <!-- Open Graph / LinkedIn / Substack link previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://grikard.github.io/token-efficiency-framework/">
+  <meta property="og:title" content="Token Efficiency Framework — Workflow Economics | Gary Rikard">
+  <meta property="og:description" content="Four-tab interactive framework for assessing AI displacement, token efficiency curves, workflow signal thresholds, and capital allocation posture.">
+  <meta property="og:site_name" content="Gary Rikard">
+  <meta property="og:locale" content="en_US">
+
+  <!-- X / Twitter preview metadata -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Token Efficiency Framework — Workflow Economics | Gary Rikard">
+  <meta name="twitter:description" content="Four-tab interactive workflow assessor for AI displacement, token efficiency, and enterprise AI capital allocation.">
+
+  <!-- Search-engine structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Token Efficiency Framework — Workflow Economics",
+    "headline": "Token Efficiency Framework — Workflow Economics",
+    "description": "A four-tab interactive workflow economics framework for assessing enterprise AI displacement, token efficiency scaling curves, signal thresholds, and capital allocation posture.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "author": {
+      "@type": "Person",
+      "name": "Gary Rikard",
+      "sameAs": "https://www.linkedin.com/in/garyrikard"
+    },
+    "creator": {
+      "@type": "Person",
+      "name": "Gary Rikard",
+      "sameAs": "https://www.linkedin.com/in/garyrikard"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Gary Rikard",
+      "sameAs": "https://www.linkedin.com/in/garyrikard"
+    },
+    "url": "https://grikard.github.io/token-efficiency-framework/",
+    "inLanguage": "en",
+    "datePublished": "2026-05-06",
+    "dateModified": "2026-05-06",
+    "keywords": [
+      "Token Efficiency",
+      "Workflow Economics",
+      "Enterprise AI",
+      "AI Displacement",
+      "Signal Threshold",
+      "Capital Allocation",
+      "Agentic AI",
+      "ROIC"
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --color-background-primary: #ffffff;
+      --color-background-secondary: #f6f7f8;
+      --color-text-primary: #111827;
+      --color-text-secondary: #4b5563;
+      --color-text-tertiary: #6b7280;
+      --color-border-secondary: #d1d5db;
+      --color-border-tertiary: #e5e7eb;
+      --border-radius-md: 12px;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #f4f2ed;
+      color: var(--color-text-primary);
+      font-family: var(--font-sans);
+    }
+
+    body { padding: 24px; }
+
+    .page-shell {
+      max-width: 980px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--color-border-tertiary);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 8px 30px rgba(17, 24, 39, 0.06);
+    }
+
+    .page-header {
+      padding-bottom: 18px;
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+      margin-bottom: 14px;
+    }
+
+    .page-kicker {
+      margin: 0 0 8px;
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+
+    .page-title {
+      margin: 0 0 8px;
+      font-size: 26px;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      font-weight: 650;
+      color: var(--color-text-primary);
+    }
+
+    .page-subtitle {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--color-text-secondary);
+      max-width: 760px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--color-border-tertiary);
+      margin: 0 -4px 18px;
+      padding: 0 4px;
+    }
+
+    .tab-button {
+      appearance: none;
+      border: none;
+      background: transparent;
+      border-bottom: 2.5px solid transparent;
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 550;
+      padding: 12px 14px 10px;
+      white-space: nowrap;
+      transition: color .15s ease, border-color .15s ease, background .15s ease;
+    }
+
+    .tab-button:hover {
+      color: var(--color-text-primary);
+      background: var(--color-background-secondary);
+    }
+
+    .tab-button.active {
+      color: var(--color-text-primary);
+      border-bottom-color: var(--color-text-primary);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    input[type=range] { accent-color: #0F6E56; }
+
+    button:not(.tab-button) {
+      border: 1px solid var(--color-border-secondary);
+      background: #fff;
+      color: var(--color-text-primary);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    button:not(.tab-button):hover { background: var(--color-background-secondary); }
+
+    
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+.sec{padding:1.75rem 0;border-top:0.5px solid var(--color-border-tertiary)}
+.sec:first-of-type{border-top:none;padding-top:0.5rem}
+.lab{font-size:11px;letter-spacing:.09em;color:var(--color-text-secondary);margin:0 0 14px}
+.h{font-size:18px;font-weight:500;margin:0 0 6px;color:var(--color-text-primary)}
+.sub{font-size:13px;color:var(--color-text-secondary);margin:0 0 18px;line-height:1.55}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--color-text-secondary);margin-bottom:10px}
+.legend-item{display:flex;align-items:center;gap:6px}
+.legend-swatch{width:14px;height:2.5px;border-radius:1px;display:inline-block}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px 16px}
+.metric-label{font-size:11px;letter-spacing:.04em;color:var(--color-text-secondary);margin-bottom:6px;text-transform:uppercase}
+.metric-value{font-size:20px;font-weight:500;line-height:1.1;color:var(--color-text-primary)}
+.metric-sub{font-size:12px;color:var(--color-text-secondary);margin-top:4px}
+.slider-row{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.slider-row label{font-size:13px;color:var(--color-text-secondary);min-width:200px;line-height:1.4}
+.slider-val{font-size:13px;font-weight:500;min-width:64px;text-align:right;font-family:var(--font-mono)}
+.qchip{display:inline-block;font-size:11px;font-weight:500;padding:3px 9px;border-radius:var(--border-radius-md);letter-spacing:.02em}
+.workflow-tag{font-size:10.5px;color:var(--color-text-secondary);position:absolute;pointer-events:none;line-height:1.2}
+
+
+    /* Override original section styling inside tabs */
+    .tab-panel > .sec {
+      border-top: none;
+      padding-top: 0;
+      padding-bottom: 0.75rem;
+    }
+
+    .author-footer {
+      margin-top: 18px;
+      padding: 14px 4px 0;
+      border-top: 1px solid var(--color-border-tertiary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      color: var(--color-text-tertiary);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .author-footer strong {
+      color: var(--color-text-primary);
+      font-weight: 650;
+    }
+
+    .author-footer a {
+      color: var(--color-text-secondary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    @media (max-width: 760px) {
+      body { padding: 12px; }
+      .page-shell { padding: 16px; }
+      .page-title { font-size: 22px; }
+      .tabs { margin-left: -16px; margin-right: -16px; padding-left: 12px; padding-right: 12px; }
+      .tab-button { font-size: 11.5px; padding-left: 10px; padding-right: 10px; }
+      .slider-row { display: grid !important; grid-template-columns: 1fr !important; gap: 6px !important; }
+      .slider-row label, .slider-val { min-width: 0 !important; text-align: left !important; }
+      .author-footer { flex-direction: column; align-items: flex-start; }
+      svg { min-width: 760px; }
+      .sec { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <p class="page-kicker">Workflow Economics · Token Efficiency · Enterprise AI Capital Allocation</p>
+      <h1 class="page-title">Token Efficiency Framework</h1>
+      <p class="page-subtitle">Four-tab interactive framework for assessing AI displacement, signal thresholds, token-cost curves, and workflow-level capital allocation posture.</p>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Token efficiency framework panels">
+      <button id="tab-equation" class="tab-button active" role="tab" aria-selected="true" aria-controls="panel-equation" onclick="showPanel('equation', this)">1. Displacement equation</button>
+<button id="tab-curves" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-curves" onclick="showPanel('curves', this)">2. Scaling curves</button>
+<button id="tab-matrix" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-matrix" onclick="showPanel('matrix', this)">3. Decision matrix</button>
+<button id="tab-assessor" class="tab-button" role="tab" aria-selected="false" aria-controls="panel-assessor" onclick="showPanel('assessor', this)">4. Workflow assessor</button>
+    </nav>
+
+    <section id="panel-equation" class="tab-panel active" aria-labelledby="tab-equation">
+<div class="sec">
+  <p class="lab">Panel 1 of 4 — the displacement equation</p>
+  <p class="h">Workflow displacement crosses 1.0 when fidelity × human cost overtake AI cost × error penalty</p>
+  <p class="sub">Variables in green are moving in favor of automation. Variables in amber hold steady or rise. The ratio's crossing point is different for every enterprise workflow — set by its signal threshold and the training data available to it.</p>
+  <svg width="100%" viewBox="0 0 1000 360" role="img" style="display:block;margin:10px auto 0;max-width:1000px">
+    <title>The displacement equation</title>
+    <desc>A ratio showing intelligence fidelity times human baseline cost over AI execution cost plus error rate times error cost. The ratio must exceed 1.0 for displacement.</desc>
+
+    <!-- Numerator -->
+    <text x="285" y="84" text-anchor="middle" font-size="28" fill="#0F6E56">Human baseline cost</text>
+    <text x="285" y="52" text-anchor="middle" font-size="15" fill="var(--color-text-secondary)" font-style="italic">rising — wages, overhead</text>
+
+    <text x="500" y="84" text-anchor="middle" font-size="24" fill="var(--color-text-secondary)">×</text>
+
+    <text x="715" y="84" text-anchor="middle" font-size="28" fill="#0F6E56">Intelligence fidelity</text>
+    <text x="715" y="52" text-anchor="middle" font-size="15" fill="var(--color-text-secondary)" font-style="italic">rising — algorithmic curve</text>
+
+    <!-- Fraction bar -->
+    <line x1="150" y1="126" x2="850" y2="126" stroke="var(--color-text-primary)" stroke-width="2.2"/>
+
+    <!-- Denominator -->
+    <text x="250" y="174" text-anchor="middle" font-size="28" fill="#0F6E56">AI execution cost</text>
+    <text x="250" y="208" text-anchor="middle" font-size="15" fill="var(--color-text-secondary)" font-style="italic">falling 10× / 12–18 months</text>
+
+    <text x="420" y="174" text-anchor="middle" font-size="24" fill="var(--color-text-secondary)">+</text>
+
+    <text x="560" y="174" text-anchor="middle" font-size="28" fill="#854F0B">Error rate</text>
+    <text x="560" y="208" text-anchor="middle" font-size="15" fill="var(--color-text-secondary)" font-style="italic">tied to fidelity gains</text>
+
+    <text x="700" y="174" text-anchor="middle" font-size="24" fill="var(--color-text-secondary)">×</text>
+
+    <text x="805" y="174" text-anchor="middle" font-size="28" fill="#854F0B">Error cost</text>
+    <text x="805" y="208" text-anchor="middle" font-size="15" fill="var(--color-text-secondary)" font-style="italic">workflow-specific</text>
+
+    <!-- Threshold -->
+    <text x="875" y="142" font-size="34" fill="var(--color-text-primary)" font-weight="650">&gt;</text>
+    <text x="922" y="142" font-size="34" fill="var(--color-text-primary)" font-weight="650">1.0</text>
+    <text x="922" y="174" font-size="16" fill="var(--color-text-secondary)" font-style="italic">displacement</text>
+    <text x="922" y="194" font-size="16" fill="var(--color-text-secondary)" font-style="italic">threshold</text>
+
+    <!-- Footnote -->
+    <text x="500" y="286" text-anchor="middle" font-size="18" fill="var(--color-text-secondary)">For high-consequence workflows the path to crossing the threshold runs through</text>
+    <text x="500" y="314" text-anchor="middle" font-size="20" fill="var(--color-text-primary)" font-weight="650">fidelity improvement, not AI cost reduction.</text>
+  </svg>
+</div>
+
+
+</section><section id="panel-curves" class="tab-panel" aria-labelledby="tab-curves">
+<div class="sec">
+  <p class="lab">Panel 2 of 4 — three scaling regimes</p>
+  <p class="h">Compute economics run on three curves now, not one</p>
+  <p class="sub">Token cost efficiency improves roughly 10× every 12–18 months — orders of magnitude faster than Moore's Law ever delivered. A board applying a uniform decay assumption to a mixed AI-era portfolio will systematically misprice both the opportunity and the risk.</p>
+  <div class="legend">
+    <span class="legend-item"><span class="legend-swatch" style="background:#1D9E75"></span>Token cost efficiency</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#378ADD"></span>GPU AI performance</span>
+    <span class="legend-item"><span class="legend-swatch" style="background:#888780;height:0;border-top:1.5px dashed #888780"></span>Moore's Law</span>
+  </div>
+  <div style="position:relative;width:100%;height:280px">
+    <canvas id="curves-chart" role="img" aria-label="Logarithmic chart from 2022 to 2028 showing token cost efficiency reaching 4000x, GPU AI performance reaching 350x, and Moore's Law reaching 8x.">Token cost efficiency rises from 1x in 2022 to 4000x by 2028. GPU AI performance reaches 350x. Moore's Law reaches 8x.</canvas>
+  </div>
+  <p style="font-size:11.5px;color:var(--color-text-secondary);margin:14px 0 0;font-style:italic;line-height:1.55">Index: 2022 = 1.0 baseline · log scale · 2026 onward projected. Sources: synthesis of frontier model pricing (Anthropic, OpenAI, Google), NVIDIA datasheets, and historical CMOS scaling.</p>
+</div>
+
+
+</section><section id="panel-matrix" class="tab-panel" aria-labelledby="tab-matrix">
+<div class="sec">
+  <p class="lab">Panel 3 of 4 — the decision matrix</p>
+  <p class="h">Two axes — signal threshold and position on the token efficiency curve — yield four capital postures</p>
+  <p class="sub">Each dot is a representative enterprise workflow placed by where its signal-to-noise threshold sits today and how soon AI economics cross the displacement line. The slope of the threshold curve is the analytical point: high-judgment workflows require disproportionately more progress before displacement becomes economic.</p>
+  <svg width="100%" viewBox="0 0 920 520" role="img" id="matrix-svg" style="display:block;margin:8px auto 0;max-width:920px">
+    <title>The decision matrix</title>
+    <desc>A two by two matrix with signal threshold on the vertical axis and position on the token efficiency curve on the horizontal axis. Workflows are placed in four capital allocation quadrants.</desc>
+
+    <!-- Matrix background -->
+    <rect x="130" y="55" width="325" height="180" fill="#FAEEDA" opacity="0.48"/>
+    <rect x="455" y="55" width="325" height="180" fill="#E6F1FB" opacity="0.58"/>
+    <rect x="130" y="235" width="325" height="180" fill="#E1F5EE" opacity="0.58"/>
+    <rect x="455" y="235" width="325" height="180" fill="#EEEDFE" opacity="0.58"/>
+
+    <!-- Quadrant labels -->
+    <text x="148" y="85" font-size="15" font-weight="650" fill="#854F0B" letter-spacing=".03em">PROTECT &amp; INVEST</text>
+    <text x="148" y="108" font-size="14" fill="#854F0B" font-style="italic">36+ months · deepen data moat</text>
+
+    <text x="472" y="85" font-size="15" font-weight="650" fill="#185FA5" letter-spacing=".03em">BUILD &amp; DEFEND</text>
+    <text x="472" y="108" font-size="14" fill="#185FA5" font-style="italic">24–48 months · proprietary signal</text>
+
+    <text x="148" y="268" font-size="15" font-weight="650" fill="#0F6E56" letter-spacing=".03em">SEQUENCE NEXT</text>
+    <text x="148" y="291" font-size="14" fill="#0F6E56" font-style="italic">12–24 months · prepare infrastructure</text>
+
+    <text x="472" y="268" font-size="15" font-weight="650" fill="#534AB7" letter-spacing=".03em">AUTOMATE NOW</text>
+    <text x="472" y="291" font-size="14" fill="#534AB7" font-style="italic">0–6 months · cost overhang</text>
+
+    <!-- Axes and grid -->
+    <line x1="130" y1="55" x2="130" y2="415" stroke="var(--color-text-secondary)" stroke-width="0.8"/>
+    <line x1="130" y1="415" x2="780" y2="415" stroke="var(--color-text-secondary)" stroke-width="0.8"/>
+    <line x1="455" y1="55" x2="455" y2="415" stroke="var(--color-text-secondary)" stroke-width="0.6" stroke-dasharray="4 4"/>
+    <line x1="130" y1="235" x2="780" y2="235" stroke="var(--color-text-secondary)" stroke-width="0.6" stroke-dasharray="4 4"/>
+
+    <!-- Frontier -->
+    <path d="M 178 95 Q 360 278 748 392" fill="none" stroke="#A32D2D" stroke-width="2" stroke-dasharray="8 6" opacity="0.7"/>
+    <text x="688" y="366" font-size="13" fill="#A32D2D" font-style="italic">displacement frontier</text>
+
+    <!-- Protect & Invest -->
+    <circle cx="250" cy="125" r="8" fill="#BA7517"/>
+    <text x="268" y="131" font-size="14" fill="var(--color-text-primary)">Strategic M&amp;A judgment</text>
+
+    <circle cx="330" cy="185" r="8" fill="#BA7517"/>
+    <text x="348" y="191" font-size="14" fill="var(--color-text-primary)">Litigation strategy</text>
+
+    <!-- Build & Defend -->
+    <circle cx="610" cy="145" r="8" fill="#378ADD"/>
+    <text x="628" y="151" font-size="14" fill="var(--color-text-primary)">Wealth advisory prep</text>
+
+    <circle cx="690" cy="205" r="8" fill="#378ADD"/>
+    <text x="520" y="212" font-size="14" fill="var(--color-text-primary)">Compliance monitoring</text>
+
+    <circle cx="520" cy="225" r="8" fill="#378ADD"/>
+    <text x="538" y="231" font-size="14" fill="var(--color-text-primary)">Contract analysis</text>
+
+    <!-- Sequence Next -->
+    <circle cx="275" cy="320" r="8" fill="#1D9E75"/>
+    <text x="293" y="326" font-size="14" fill="var(--color-text-primary)">Standard code review</text>
+
+    <circle cx="355" cy="380" r="8" fill="#1D9E75"/>
+    <text x="373" y="386" font-size="14" fill="var(--color-text-primary)">Onboarding workflows</text>
+
+    <!-- Automate Now -->
+    <circle cx="610" cy="345" r="8" fill="#7F77DD"/>
+    <text x="628" y="351" font-size="14" fill="var(--color-text-primary)">Invoice processing</text>
+
+    <circle cx="555" cy="398" r="8" fill="#7F77DD"/>
+    <text x="573" y="404" font-size="14" fill="var(--color-text-primary)">Data entry</text>
+
+    <circle cx="690" cy="380" r="8" fill="#7F77DD"/>
+    <text x="708" y="386" font-size="14" fill="var(--color-text-primary)">Tier 1 support</text>
+
+    <!-- Axis labels -->
+    <text x="130" y="462" font-size="14" fill="var(--color-text-secondary)">far from displacement</text>
+    <text x="780" y="462" font-size="14" fill="var(--color-text-secondary)" text-anchor="end">below displacement line</text>
+    <text x="455" y="492" font-size="15" font-weight="650" fill="var(--color-text-primary)" text-anchor="middle">Position on token efficiency curve →</text>
+
+    <text x="64" y="235" font-size="15" font-weight="650" fill="var(--color-text-primary)" text-anchor="middle" transform="rotate(-90 64 235)">← Signal threshold of workflow</text>
+    <text x="110" y="83" font-size="14" fill="var(--color-text-secondary)" text-anchor="middle" transform="rotate(-90 110 83)">high</text>
+    <text x="110" y="400" font-size="14" fill="var(--color-text-secondary)" text-anchor="middle" transform="rotate(-90 110 400)">low</text>
+  </svg>
+</div>
+
+
+</section><section id="panel-assessor" class="tab-panel" aria-labelledby="tab-assessor">
+<div class="sec">
+  <p class="lab">Panel 4 of 4 — workflow assessor</p>
+  <p class="h">Score any workflow on four dimensions to place it on the matrix</p>
+  <p class="sub">The assessor is the operational instrument — what a CIO uses inside a portfolio review. Adjust the sliders to characterize a workflow; the placement, recommendation, and ROIC horizon update live.</p>
+
+  <div style="margin-bottom:1.25rem">
+    <div class="slider-row">
+      <label>Signal threshold<br><span style="font-size:11px;color:var(--color-text-tertiary)">cognitive fidelity required</span></label>
+      <input type="range" id="s-signal" min="0" max="100" value="35" step="1" style="flex:1">
+      <span class="slider-val" id="v-signal">35</span>
+    </div>
+    <div class="slider-row">
+      <label>Annual volume<br><span style="font-size:11px;color:var(--color-text-tertiary)">leverage from automation</span></label>
+      <input type="range" id="s-volume" min="0" max="100" value="70" step="1" style="flex:1">
+      <span class="slider-val" id="v-volume">70</span>
+    </div>
+    <div class="slider-row">
+      <label>Error cost<br><span style="font-size:11px;color:var(--color-text-tertiary)">consequence of a wrong output</span></label>
+      <input type="range" id="s-error" min="0" max="100" value="40" step="1" style="flex:1">
+      <span class="slider-val" id="v-error">40</span>
+    </div>
+    <div class="slider-row">
+      <label>Training data coverage<br><span style="font-size:11px;color:var(--color-text-tertiary)">proprietary signal availability</span></label>
+      <input type="range" id="s-data" min="0" max="100" value="60" step="1" style="flex:1">
+      <span class="slider-val" id="v-data">60</span>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:1.25rem">
+    <div class="metric">
+      <div class="metric-label">Posture</div>
+      <div class="metric-value" id="m-posture" style="font-size:17px">Automate now</div>
+      <div class="metric-sub" id="m-posture-sub">below displacement line</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Displacement ratio</div>
+      <div class="metric-value" id="m-ratio">1.8</div>
+      <div class="metric-sub" id="m-ratio-sub">crosses 1.0 → displaceable</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">ROIC horizon</div>
+      <div class="metric-value" id="m-horizon">0–6 mo</div>
+      <div class="metric-sub" id="m-horizon-sub">capital deployment window</div>
+    </div>
+  </div>
+
+  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:14px 16px;margin-bottom:1rem">
+    <div style="font-size:11px;letter-spacing:.04em;color:var(--color-text-secondary);margin-bottom:6px;text-transform:uppercase">Capital allocation guidance</div>
+    <div id="m-action" style="font-size:13.5px;line-height:1.6;color:var(--color-text-primary)"></div>
+  </div>
+
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button onclick="loadPreset('invoice')">Invoice processing</button>
+    <button onclick="loadPreset('tier1')">Tier 1 support</button>
+    <button onclick="loadPreset('compliance')">Compliance monitoring</button>
+    <button onclick="loadPreset('wealth')">Wealth advisory prep</button>
+    <button onclick="loadPreset('mna')">M&amp;A judgment</button>
+  </div>
+</div>
+
+
+</section>
+
+    <footer class="author-footer">
+      <div><strong>Gary Rikard, MBA</strong> · Workflow Economics series · Token Efficiency Framework</div>
+      <div><a href="https://www.linkedin.com/in/garyrikard" target="_blank" rel="noopener noreferrer">LinkedIn: garyrikard</a></div>
+    </footer>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+(function(){
+  const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+  const grid = dark ? 'rgba(255,255,255,.06)' : 'rgba(0,0,0,.05)';
+  const tick = dark ? '#9c9a92' : '#73726c';
+  new Chart(document.getElementById('curves-chart'), {
+    type: 'line',
+    data: {
+      labels: ['2022','2023','2024','2025','2026','2027*','2028*'],
+      datasets: [
+        {label:'Token cost efficiency', data:[1,5,25,120,500,1500,4000], borderColor:'#1D9E75', borderWidth:2.5, tension:.35, pointRadius:4, pointBackgroundColor:'#1D9E75', fill:false},
+        {label:'GPU AI performance', data:[1,3.3,9,30,80,180,350], borderColor:'#378ADD', borderWidth:2, tension:.35, pointRadius:4, pointBackgroundColor:'#378ADD', fill:false},
+        {label:"Moore's Law", data:[1,1.4,2,2.8,4,5.6,8], borderColor:'#888780', borderWidth:1.5, borderDash:[5,4], tension:.3, pointRadius:3, pointBackgroundColor:'#888780', fill:false}
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false} },
+      scales:{
+        x:{ grid:{color:grid}, ticks:{color:tick, font:{size:12}} },
+        y:{
+          type:'logarithmic',
+          grid:{color:grid},
+          ticks:{
+            color:tick, font:{size:11},
+            callback:v => v>=1000 ? (v/1000)+'K×' : v+'×'
+          },
+          title:{display:true, text:'Performance index (log scale, 2022 = 1×)', color:tick, font:{size:11}}
+        }
+      }
+    }
+  });
+
+  const sIds = ['signal','volume','error','data'];
+  const vals = {signal:35, volume:70, error:40, data:60};
+  sIds.forEach(k => {
+    const slider = document.getElementById('s-'+k);
+    const out = document.getElementById('v-'+k);
+    slider.addEventListener('input', () => {
+      vals[k] = +slider.value;
+      out.textContent = vals[k];
+      compute();
+    });
+  });
+
+  const presets = {
+    invoice:    {signal:20, volume:90, error:25, data:80},
+    tier1:      {signal:30, volume:85, error:30, data:70},
+    compliance: {signal:75, volume:55, error:85, data:50},
+    wealth:     {signal:70, volume:45, error:70, data:55},
+    mna:        {signal:90, volume:20, error:95, data:25}
+  };
+  window.loadPreset = function(key){
+    const p = presets[key];
+    sIds.forEach(k => {
+      vals[k] = p[k];
+      document.getElementById('s-'+k).value = p[k];
+      document.getElementById('v-'+k).textContent = p[k];
+    });
+    compute();
+  };
+
+  function compute(){
+    const fidelityProxy = 50 + (vals.data - 50) * 0.6;
+    const aiCostProxy = 100 - vals.data * 0.5;
+    const errorPenalty = (100 - fidelityProxy) * 0.01 * vals.error;
+    const numerator = fidelityProxy * (60 + vals.volume * 0.4);
+    const denominator = aiCostProxy + errorPenalty;
+    const ratio = numerator / Math.max(denominator, 10) / 30;
+    const xPos = Math.max(0, Math.min(100, 100 - vals.signal * 0.4 + vals.data * 0.4 - vals.error * 0.3));
+    const yPos = vals.signal;
+
+    let posture, postureSub, horizon, horizonSub, action, color;
+    if (yPos < 50 && xPos >= 50) {
+      posture = 'Automate now';
+      postureSub = 'below displacement line';
+      horizon = '0–6 mo';
+      horizonSub = 'cost overhang every quarter';
+      action = 'Deploy AI agents to this workflow immediately. Begin with the highest-volume, most standardized instances. Track error rates aggressively — quality metric, not throughput. Reinvest labor savings into governance infrastructure and the data moat that protects adjacent workflows.';
+    } else if (yPos < 50 && xPos < 50) {
+      posture = 'Sequence next';
+      postureSub = 'approaching displacement';
+      horizon = '12–24 mo';
+      horizonSub = 'prepare ahead of capability';
+      action = 'Unit economics not yet favorable, but the capability arrives within 24 months. The correct allocation is workflow documentation and process standardization — the harder preparatory work. Begin vendor evaluation now to compress deployment lag when the threshold crosses.';
+    } else if (yPos >= 50 && xPos >= 50) {
+      posture = 'Build & defend';
+      postureSub = 'high threshold, threshold crossing soon';
+      horizon = '24–48 mo';
+      horizonSub = 'highest-stakes capital allocation';
+      action = 'AI capability is approaching this signal threshold. The capital priority is proprietary training data — secure it before challengers establish context advantage. Build governance and compliance infrastructure now so you are operationally ready when the threshold is crossed.';
+    } else {
+      posture = 'Protect & invest';
+      postureSub = 'far from displacement';
+      horizon = '36+ mo';
+      horizonSub = 'deepen the data moat';
+      action = 'Far from displacement. The token efficiency curve has not yet reached this signal threshold. Maintain human capital investment and deepen domain expertise. Strategic priority is identifying and protecting the proprietary data assets embedded in this workflow — they become structural moat when the threshold eventually arrives.';
+    }
+
+    document.getElementById('m-posture').textContent = posture;
+    document.getElementById('m-posture-sub').textContent = postureSub;
+    document.getElementById('m-ratio').textContent = ratio.toFixed(2);
+    document.getElementById('m-ratio-sub').textContent = ratio >= 1 ? 'above 1.0 — displaceable' : 'below 1.0 — wait, prepare';
+    document.getElementById('m-horizon').textContent = horizon;
+    document.getElementById('m-horizon-sub').textContent = horizonSub;
+    document.getElementById('m-action').textContent = action;
+  }
+  compute();
+})();
+</script>
+
+  <script>
+    function showPanel(id, button) {
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-button').forEach(tab => {
+        tab.classList.remove('active');
+        tab.setAttribute('aria-selected', 'false');
+      });
+
+      const panel = document.getElementById('panel-' + id);
+      if (panel) panel.classList.add('active');
+
+      button.classList.add('active');
+      button.setAttribute('aria-selected', 'true');
+
+      // Chart.js occasionally needs a resize after a hidden tab becomes visible.
+      setTimeout(() => {
+        if (window.Chart) {
+          Object.values(Chart.instances || {}).forEach(chart => chart.resize && chart.resize());
+        }
+      }, 50);
+    }
+  </script>
+</body>
+</html>
